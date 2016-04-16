@@ -106,33 +106,55 @@
 %% \address[label1]{}
 %% \address[label2]{}
 
-% added as alphabetical listing to start -- this will change!
+\author[hudd]{Colin C. Venters}
 \author[cmu]{Tom Crick\fnref{footnote1}}
 \author[csu]{Birgit Penzenstadler}
-\author[hudd]{Colin C. Venters}
+\address[hudd]{School of Computing \& Engineering, University of
+  Huddersfield, UK}
 \address[cmu]{Department of Computing \& Information Systems, Cardiff
   Metropolitan University, UK}
-\address[csu]{California State University, Long Beach, USA}
-\address[hudd]{School of Computing and Engineering, University of
-  Huddersfield, UK}
+\address[csu]{Department of Computer Engineering \& Computer Science, California State University, Long Beach, USA}
 
-% and this can change too!
+% corresponding author -- this can change!
 \fntext[footnote1]{Corresponding author at: Department of Computing \&
   Information Systems, Cardiff Metropolitan University, Cardiff CF5 2YB, UK. Tel: +44 (0)2920417174.
 \newline
-E-mail addresses: \url{tcrick@cardiffmet.ac.uk} (T. Crick),
-\url{birgit.penzenstadler@csulb.edu} (B. Penzenstadler), 
-\url{c.venters@hud.ac.uk} (C. C. Venters)}
+E-mail addresses: \url{c.venters@hud.ac.uk} (C. C. Venters), 
+\url{tcrick@cardiffmet.ac.uk} (T. Crick) and 
+\url{birgit.penzenstadler@csulb.edu} (B. Penzenstadler)}
 
+% JORS abstract
 \begin{abstract}
-%% Text of abstract
-
+Sustainability has emerged as a broad issue for society as a result of
+significant concerns about the environmental, economic and social
+consequences of the rapid consumption of the planets natural
+resources, and exponential economic and population
+growth. Sustainability is emerging as an area of growing interest in
+the field of software engineering as a result of the extent to which
+software systems impact many aspects of society both at the macro and
+micro-level. While there is no agreed definition of the concept it is
+increasingly being considered as a non-functional requirement; a
+desired quality of a software system. One of the principal challenges
+in defining sustainability as a non-functional requirement is how to
+develop appropriate metrics and measures to demonstrate that the
+software is sustainable. Software architectures are the foundation of
+any software system and provide a mechanism for reasoning about
+quality attributes. Given the high dependency of non-functional
+requirements on their software architecture, this paper proposes that
+sustainable software architectures are fundamental to the development
+of technically sustainable software.
 \end{abstract}
 
 \begin{keyword}
 %% keywords here, in the form: keyword \sep keyword
-Software sustainability \sep Software architectures
+Software sustainability \sep Software architectures \sep Architectural sustainability
 %% PACS codes here, in the form: \PACS code \sep code
+
+% JORS paper keywords:
+% Architectural sustainability, non-functional requirements, software
+% architectures, software quality, sustainability, software
+% sustainability, technical sustainability.
+
 
 %% MSC codes here, in the form: \MSC code \sep code
 %% or \MSC[2008] code \sep code (2000 is the default)
@@ -146,8 +168,597 @@ Software sustainability \sep Software architectures
 %% main text
 \section{Introduction}\label{sec:intro}
 
-Dummy cite to get some
-references~\citep{crick-et-al_wssspe2,crick-et-al_recomp2014,venters-et-al_wssspe3}.
+% Dummy cite to get some
+% references~\citep{crick-et-al_wssspe2,crick-et-al_recomp2014,venters-et-al_wssspe3}.
+
+Sustainability has been identified as an important future topic in the
+field of software engineering as software systems become increasingly
+more complex and operate in evolving, distributed eco-systems
+[1]. However, the concept of software sustainability is an elusive and
+ambiguous term with diametrical opposed views and interpretations
+[2]. As a result, there is a considerable amount of mystification and
+divergence regarding what software sustainability means, how it can be
+measured or demonstrated, and how to train and educate the broad
+spectrum of domain scientists or advance the skills of software
+engineers to develop software that is sustainable [3].  Change is
+inevitable [4]. It estimated that approximately 50--70\% of the total
+lifecycle cost is spent on evolving a system [5]. If change is an
+inevitable feature of the software lifecycle this raises the question,
+what is the most efficient and effective method or approach for
+managing change and evolution in terms of software’s sustainability?
+
+The biblical tale of Nebuchadnezzar's
+dream\footnote{\url{https://en.wikipedia.org/wiki/Daniel_2}} relates
+to a statue composed of different types of metal built on a foundation
+of clay and iron [6]. However, iron and clay are materials that cannot
+bond to form a long-lasting foundation and will deteriorate
+overtime. The analogy of the feet of clay is now commonly used to
+refer to a weakness or flaw. The central thesis of this paper is that
+sustainable software should be built from a strong and solid
+foundation that allows efficient and effective maintenance and
+evolutionary change. To achieve this, this paper proposes that
+sustainable software architectures are fundamental to the development
+of technically sustainable software. The principle aim of this paper
+is to explore existing work to provide the theoretical foundation to
+support our thesis. Section 2 examines the concept of sustainability
+and its relationship to sustainable software. Section 3 examines the
+relationship between non-functional requirements, sustainability and
+software architectures. Section 4 explores emerging work in the area
+of developing sustainable software architectures. In Section 5,
+conclusions are drawn and future directions are outlined.
+
+
+\section{Sustainable Software}\label{sec:sussoft}
+
+Before software sustainability can be measured as an attribute it must
+be understood [7]. The word sustainability is derived from the Latin
+{\emph{sustinere}}. The Oxford English Dictionary [8] defines
+sustainability as ‘the quality of being sustained’, where
+sustained can be defined as ‘capable of being endured’ and ‘capable of
+being ‘maintained’. This suggests that longevity and the ability to
+maintain are key factors at the heart of understanding sustainability.
+As a part of the concept of sustainable development, the most widely
+adopted definition of sustainability was that proposed by the
+Brundtland commission [9], which was defined as ‘meeting the needs of
+the present without compromising the ability of future generations to
+meet their own needs’. The word ‘need’ is central to this definition
+and includes a dimension of time, present and future. However, this
+definition is problematic for several reasons including that it is
+broad in its scope, it is open to interpretation, and it is difficult,
+if not impossible, to quantify.
+
+In recent years, a triple bottom line perspective of sustainability
+has been adopted which considers sustainability to include three
+dimensions: environment, society and economy [10]. Environmental
+sustainability is concerned with minimizing the impact on the
+environment and natural resources. Social sustainability is concerned
+with building social equity. Economic sustainability is concerned with
+economic growth and its impact on social or natural resources. It is
+argued that by addressing the three dimensions it can lead to more
+sustainable outcomes [11]. Goodland [12] and Penzenstadler and Femmer
+[13] extend these dimensions to include individual and technical
+sustainability where {\emph{individual sustainability}} is `{\emph{the
+maintenance of the private good of individual human capital}}'
+i.e. health, education etc., and {\emph{technical sustainability}} is
+`{\emph{the long-term usage of systems and their adequate evolution
+with changing surrounding conditions and respective
+requirements}}'. In addition, we can also consider the five dimensions
+in relation to three orders of impact or effects of software systems
+[10]:
+
+\begin{itemize}
+\item {\emph{First-order:}} direct impacts created by the physical
+existence and the processes involved including design, production,
+distribution, maintenance and disposal;
+\item {\emph{Second-order:}} indirect impacts created by ongoing
+usage;
+\item {\emph{Third-order:}} systemic impacts aggregated over the
+medium to long term.
+\end{itemize}
+
+Koziolek [14] takes a literal interpretation of the concept of
+sustainability and suggests that sustainable software can be defined
+as `{\emph{a software-intensive system that operates for more than
+fifteen years}}'. This is a position supported by Tamai and Torimitsu
+[15] who suggest that the average software lifetime is ten years, with
+a minimum of two years, and a maximum of thirty. In addition, they
+highlight that longevity requirements can be embedded in a number of
+domains where there are large [financial] investments. Koziolek [14]
+extends this definition where sustainable software is defined as
+`{\emph{a long-living software system which can be cost-efficiently
+maintained and evolved over its entire life-cycle}}'. This definition
+suggests that maintainability and extensibility are key features of
+sustainability, which are tightly coupled with an economical
+dimension.
+
+Similarly, a number of definitions have emerged from the field of
+software engineering, which focuses on the sustainability of the
+software artifact where maintainability and evolution are key factors
+of sustainability [7, 16-18]. In this context maintainability can be
+defined as `{\emph{the ease with which a software system or component
+can be modified to correct faults, improve performance or other
+attributes, or adapt to a changed environment}}' [19]. Maintainability
+is also related to extendability and flexibility, which the former is
+concerned with increasing storage or functional capacity, and the
+later is concerned with integration with other applications or
+environments respectively. The main objective of software evolution is
+ensuring reliability and flexibility of the system where the former is
+concerned with functional performance and is also related to
+availability. This strongly suggests that software sustainability is a
+composite attribute.
+
+There has also been a parallel interest in defining sustainable
+software from a software development perspective, which is concerned
+with the broader direct and indirect impacts on the economy, society
+and the environment [20-21]. However, Fenner et. al., [22] argue that
+for sustainable engineering to be successful it requires a paradigm
+shift in thinking to embrace a holistic approach enshrined in the
+field of complex systems science.
+
+A diametrically opposed position of an absolute definition of software
+sustainability is that it is simply an emergent property of a software
+system determined by market forces [23]. This suggests that
+sustainability cannot be designed or engineered and quantified until
+after the software system is operational. While it could be argued
+that software sustainability is an emergent property similar to safety
+[24], it is a highly probable that a software artifact that has
+endured over time will have at the very minimum been maintained
+[25]. This suggests that software sustainability is at the very
+minimum a measure of maintainability metrics such as the
+maintainability index, which can be derived from such measures as
+lines-of-code, McCabe or Halstead complexity [26]. In addition, the
+software artifact may have evolved or been ported on to different
+platforms. This strongly suggests that software sustainability is not
+an emergent property and is a composite attribute with a number of
+sub-characteristics related to maintenance and evolution.
+
+Increasingly, software sustainability is being considered a first
+class, non-functional requirement [24]. In the field of software
+engineering, non-functional requirements or software quality
+attributes can be defined as `{\emph{the degree to which a system,
+component or process meets a stakeholders needs or expectations}}'
+[19]. This aligns with the Brundtland [9] definition of sustainability
+addressing needs.
+
+Without explicit reference to specific non-functional requirements,
+the GREENSOFT model proposed by Naumann et. al., [21] is designed to
+incorporate a range of non-functional requirements within the three
+categories of the sustainability criteria and metrics section of the
+reference model. This separation allows the examination of first-,
+second- and third- order impacts from an environmental perspective
+that result from effects of supply, effects of usage and systemic
+effects. However, they suggest that the fundamental question at the
+heart of the model is not, in which phase are metrics applied or in
+which phases are they taken in order to improve the quality
+attributes? The principal question is thus: {\emph{in which life cycle
+phase can the related effects be observed?}}
+
+Venters et. al., [27-28] defined software sustainability as a
+composite, non-functional requirement which is `{\emph{a measure of a
+systems extensibility, interoperability, maintainability, portability,
+reusability, scalability, and usability}}'. Several of the metrics are
+directly related to the concept of evolution of the software
+system. The rationale for including usability as a metric of
+sustainability is that it is directly related to perceived usefulness
+from a stakeholder’s perspective and thereby aligns sustainability
+with the issue of need. In addition, several of the quality attributes
+specify the `{\emph{effort required}}' to achieve a particular
+outcome. This suggests that the concept of sustainability is strongly
+coupled to other quality attributes such as energy and cost
+efficiency, and resource utilization over the software’s entire
+lifetime and aligns with the dimensions of environmental and economic
+sustainability.
+
+Defining software sustainability as a composite, non-functional
+requirement is also a position supported by Calero, Bertoa, and Moraga
+[29] who suggest that software sustainability is related to a number
+of the main quality attributes and their sub-characteristics defined
+in ISO/IEC 25010 [30]; the standard has eight product quality
+characteristics and thirty-one sub-characteristics. However, they
+suggest that sustainability can be considered from two perspectives:
+{\emph{energy efficiency}} and {\emph{perdurability}}. Energy
+efficiency is related to consumption and resource optimization, which
+aligns to the dimension of environmental sustainability. Based on the
+sub-characteristics of {\emph{reusability}}, {\emph{modifiability}},
+and {\emph{adaptability}} they define {\emph{perdurability}} as the
+`{\emph{degree to which a software product can be modified, adapted
+and reused in order to perform specified functions under specified
+conditions for a long period of time}}'. However, this significantly
+narrows the view of software sustainability as a composite,
+non-functional requirement and potentially eliminates important
+software quality attributes related to software evolution. Similarly,
+it is not clear why attempting to redefine software sustainability in
+terms of its perdurability i.e. very durable, is different from the
+overall aim of making software sustainable, at least in terms of the
+artifact, as the basic definition of sustainability is underpinned by
+the idea of enduring. Similarly, Koziolek et. al., [31] define
+software sustainability from a maintainability perspective in terms of
+its modifiability, reusability, modularity and testability. These
+definitions of software sustainability strongly suggest that it can be
+categorized as a composite, non-functional requirement. At the very
+minimum, technical software sustainability should address two core
+quality attributes including appropriate sub-characteristics:
+maintainability and extendibility. Nevertheless, maintainability as
+defined by ISO/IEC 25010 has new sub-characteristics of modularity,
+reusability, and modifiability, which address the issue of software
+evolution. As a result, what metrics and measures are suitable to
+demonstrate software sustainability is an open research problem.
+
+However, one of the principal challenges in defining software
+sustainability as a non-functional requirement is how to demonstrate
+that the quality factors have been addressed in a quantifiable
+way. How this might be achieved is discussed in the following section.
+
+
+\section{Sustainability \& Software Architectures}\label{sust+softarch}
+
+To achieve technical sustainable software, we postulate that
+[sustainable] software architectures are fundamental to their
+development [28]. A software architecture is `{\emph{the fundamental
+organization of a system embodied in its components, their
+relationships to each other, and to the environment, and the
+principles guiding its design and evolution}}' [ISO/IEC
+42010-2007]. The rationale for this position is that it is argued that
+successful software systems development and evolution is highly
+dependent on making informed decisions at the architectural level as
+the architecture is the primary carrier of system qualities such as
+maintainability, modifiability, reusability, portability and
+scalability, none of which it is argued can be achieved without a
+unifying architectural vision [33-34]. In addition, Koziolek [35]
+argues that software architectures determine sustainability as they
+influence how developers are able to understand, analyze, extend, test
+and maintain a software system. As a result, software architectures
+are not only the blueprint of how the software system will be built,
+they hold the key to post-deployment system understanding,
+maintenance, and evolution. As a result, this strongly suggests that
+software architectures are fundamental to achieving software
+sustainability.
+
+An example of how software architectures are fundamental to the
+development of sustainable software was reported by Berriman et. al.,
+[36]. They present a case study of an approach to sustainable software
+applied over a ten-year period to astronomy software services at the
+NASA Infrared Processing and Analysis Center at Caltech. In this context,
+software sustainability is implicitly defined as long living. Their
+approach involved using a component-based architecture, which
+consisted of approximately one hundred core components, and was
+designed from its inception to support sustainability i.e. longevity,
+extensibility, and portability. The rationale for implementing the
+architectural style was to enable reusability, adaptability and
+portability. Their approach demonstrates that longevity can be
+embedded in a software architecture at the outset to support changing
+stakeholder requirements and technical obsolesce. In addition, they
+recommend a number of best practices for software sustainability based
+on their experience:
+
+\begin{itemize}
+\item Design for sustainability, extensibility, reusability and
+portability from the outset;
+\item Adopt a component-based architecture;
+\item Assess impact and risk of adopting new or emerging technology;
+\item Build a user community;
+\item Encourage stakeholder engagement;
+\item Adopt rigorous software engineering practices;
+\item Develop open source software.
+\end{itemize}
+
+However, architectural design is in part a creative process where the
+design of a system must provide a balance between the functional and
+non-functional requirements. As a result, Sommerville [37] suggests
+that it is useful to think of this process as a series of decisions
+where a number of fundamental questions are answered rather than a
+sequence of activities. In addition, Avgeriou, Stal, and Hilliard [38]
+highlight that while the software architecture is the foundation of a
+software system encompassing a system architects and stakeholders
+strategic decisions, these are often made in an unsystematic and
+undocumented manner. As a result, this can lead to architectural drift
+and erosion, resulting in a decrease in software quality, which in
+turn leads to increased costs and dissatisfied stakeholders. This
+suggests the architectural design and reasoning is based on the level
+expertise of the software architect and tacit architectural
+knowledge. As a result, it is essential to consider the sustainability
+of the software architecture as an intrinsic part of overall software
+sustainability.
+
+
+\section{Sustainable Software Architectures}\label{sustsoftarch}
+
+Architecture sustainability is the capacity of a software architecture
+to endure different types of change through efficient maintenance and
+orderly evolution over its entire life cycle [38]. Koziolek [14]
+conducted a systematic review of the literature in order to address a
+number of key questions related to architectural sustainability:
+
+\begin{itemize}
+\item How do scenario-based architecture evaluation methods used
+industry support the sustainability of software architectures?
+\item Which are the most appropriate architectural-level metrics to
+analyze the sustainability of software architectures?
+\end{itemize}
+
+Twenty scenario-based methods were initially identified. Of these only
+two, ATAM [39] and ALMA [40], met the criteria for inclusion; were
+active and applied in industrial settings. While ATMA was not
+specifically designed for sustainability evaluation it offered a range
+of techniques in the context of sustainability evaluation. In
+contrast, ALMA was specifically designed for modifiability and offers
+a number of techniques for change scenario elicitation. However, the
+overall results suggest that existing scenario-based methods do not
+provide sufficient support for the systematic analysis of ripple
+effects, or the integration with reverse engineering tools and
+knowledge management support. Similarly, forty architectural-level
+metrics were identified, which could potentially assist sustainability
+evaluation of implemented architectures. However, many were based on
+plausibility and have not been systematically validated. As a result,
+their value in addressing sustainability is an open research question.
+
+Zdun et. al., [41] suggest that software architectures not only
+comprise a systems structure but essential design decisions based on
+architectural knowledge. They argue that to achieve sustainable
+architectures, requires capturing significant sustainable design
+decisions and their rationale as failure to do so can lead to decision
+rationale erosion. They derive five key criteria to define decision
+sustainability:
+
+\begin{itemize}
+\item Strategic consequences;
+\item Measurable and manageable;
+\item Achievable and realistic;
+\item Rooted in requirements;
+\item Timeliness.
+\end{itemize}
+
+They suggest that the five criteria are strongly related to the
+decision life cycle. As a result, the evolution of decisions across
+the life cycle affects the degree of sustainability achieved at any
+given time period. Based on the results of a case study, they propose
+a set of guidelines to identify and capture a minimalistic set of
+relevant decisions and trace links, including:
+
+\begin{itemize}
+\item Establishing explicit traceability links between decisions and
+requirements;
+\item Establishing traceability links among decisions, architecture,
+and code;
+\item The use and application of design rationale;
+\item Minimal decision documentation.
+\end{itemize}
+
+As a result, it is suggested that capturing and maintaining
+relationships between sources and architectural design decisions can
+prevent `architectural knowledge vaporization'. How this can be
+achieved in practice is unclear and provides further avenues for
+research.
+
+Avgeriou, Stal, and Hilliard [38] identify several causes of change
+that are significant for architecture sustainability:
+
+\begin{itemize}
+\item New requirements emerge while older requirements change;
+\item Interdependence between requirements and architecture;
+\item Changes in business strategies and goals;
+\item Environment changes;
+\item Architecture erosion or drift;
+\item Accidental complexity;
+\item Technology change;
+\item Deferred decisions to meet near-term goals;
+\item Human error.
+\end{itemize}
+
+To improve architecture sustainability they propose `{\emph{systematic
+architecting}}' which considers a system in its total environment, where
+environment is defined as the `{\emph{context determining the setting and
+circumstances of all influences upon a system including developmental,
+technological, business, operational, organizational, political,
+economic, legal, regulatory, ecological and social influences}}'
+[42]. As a whole, these elements form the basis for establishing the
+forces that architects must consider when making decisions and
+identifying the risks to be mitigated throughout the systems
+lifecycle. To support this, they distinguish between three types of
+approaches for handling change systematically which are listed in
+order of severity:
+
+\begin{itemize}
+\item Refactoring: modifying existing components without impacting
+functionality.
+\item Renovating: rebuilding one or more essential components from
+scratch;
+\item Rearchitecting: creating a new architecture.
+\end{itemize}
+
+While maintainability and evolution are usually treated individually
+they advocate making explicit the differences between the approaches
+as they suggest that mixing the three types obfuscates the challenges
+of architecture sustainability for practicing architects and offers no
+clear direction to researchers.
+
+To address the cost-effective and sustainable evolution of industrial
+software systems, Koziolek et. al., [43] proposed MORPHOSIS: a
+holistic, sustainable, software architectural method that incorporates
+evolution scenario analysis to deal with technological change and
+unexpected redesign; architecture enforcement to avoid architectural
+erosion; and architectural-level code metrics framework to assess
+trends of sustainability. Architectural-level code metrics were based
+on existing metrics and selected on the basis of their relevance to
+maintainability [44]. They argue that alternative approaches have only
+gained limited adoption in practice because the return on investment
+is unknown. However, they acknowledge that the limitations of their
+approach are that the metrics are not widely used in practice, some
+metrics conflict with each other, and that they could not quantify the
+return on investment of applying their method.
+
+In a follow on study, Koziolek et. al., [45] argue that it is
+difficult to express a software architecture’s sustainability in a
+single metric as relevant information may be spread across a range of
+related factors including requirements and architecture design
+documents, technology choices, source code, systems context, and the
+software architectures tacit knowledge. As a result, software
+architecture sustainability should consider multiple perspective
+including volatile requirements, technology decisions, architecture
+erosion, and modularization. Applying the MORPHOSIS approach [46],
+they report the results of a two-year longitudinal study, which
+tracked selected sustainability measurements of a large-scale,
+distributed industrial control system. The results suggest that a
+number of predicted evolution scenarios had occurred and those that
+had not were still valid. Similarly, the use of architecture
+enforcement to avoid architectural erosion created a higher awareness
+for the architecture specification resulting in fewer dependency
+violations. Finally, the architectural-level code metrics framework
+led to an improvement in the overall code quality at the design level
+because a measurement instrument was in place. This suggests that
+assessments can be conducted with limited effort and that through
+regular assessment code can be improved through refactoring to achieve
+improved sustainability. Nevertheless, further work is required to
+correlate software maintenance costs with the architectural metrics to
+enable quantitative cost-benefit analysis. However, it was noted that
+software maintenance remained a challenge.
+
+Sehestedt, Cheng, and Bouwers [47] state that software architectures
+and their representations in models are instrumental in achieving
+sustainability, and the fulfillment of functional and non-functional
+requirements. They suggest that the quality of a software
+architectural model can be measured by evaluating it against the
+following criteria: {\emph{completeness}}, {\emph{consistency}},
+{\emph{correctness}} and {\emph{clarity}}. In addition, they propose
+seven, system independent metrics, against which the four-C's criteria
+can be judged:
+
+\begin{itemize}
+\item Decomposition quality;
+\item Best practices adherence;
+\item View consistency;
+\item Rationalization completeness;
+\item Requirement fulfillment;
+\item Change scenario robustness;
+\item Decision traceability.
+\end{itemize}
+
+The proposed metrics address quality attributes from three views:
+architecture models; architectural decisions; and requirement
+specifications. This approach differs from traditional methods as it
+indirectly assesses the quality of the architecture through its
+documentation. The rationale for this is that architecture models and
+related documentation are generally not formal models through which an
+architect can evaluate the architectural model in a consistent and
+repeatable way. However, they acknowledge that coverage of the
+proposed metrics is limited and requires validation to test the limits
+of their approach.
+
+In contrast, Ameller et. al., [48] present an interesting counter
+argument to our position and the general consensus on the symbiotic
+relationship between non-functional requirements and software
+architectures. The aim of the study was to investigate how architects
+deal with non-functional requirements and focused on four questions:
+
+\begin{itemize}
+\item What types of non-functional requirements are relevant to software architects?
+\item How are non-functional requirements elicited?
+\item How are non-functional requirements documented?
+\item How are non-functional requirements validated?
+\end{itemize}
+
+Based on semi-structured interviews with thirteen software architects
+at twelve software intensive organizations covering a variety of
+business and application domains, the results revealed a number of
+interesting findings. Firstly, non-functional requirements were
+principally defined by architects rather than being driven by
+stakeholders needs. Secondly, non-functional requirements are
+generally not documented or precise in their representation. Finally,
+non-functional requirements were only partially validated, if at
+all. Overall, the results suggest that there is a significant mismatch
+between software engineering theory and practice. However, Buschmann
+et. al., [49] suggests that this apparent mismatch provides valuable
+insights into how to deal with non-functional requirements in software
+development; a prime indicator is their business value. As a result,
+software architects need to be pragmatic in how they balance the
+inclusion of non-functional requirements as a prime driver of
+architecture design.
+
+
+\section{Summary \& Conclusions}\label{summconc}
+
+In this paper we propose that sustainable software architectures are
+fundamental to the development of technical sustainable software as a
+basis for discussion in order to consider how we can address the
+challenge of developing and achieving sustainable software. The paper
+explores previous research to provide the theoretical foundation to
+support our thesis.
+
+Examination of the concept of sustainability and its relationship to
+software demonstrates that software sustainability has been defined
+from a number of different perspectives including that of the software
+artifact and the software engineering development process. While there
+is no agreement on an absolute definition of software sustainability
+there is growing consensus that software sustainability should be
+considered a first-class, non-functional requirement that is a measure
+of a number of core quality attributes. We suggest that at the very
+minimum, a software's technical sustainability should address two core
+quality attributes: maintainability and extendibility. To what extent
+existing metrics and measures of quality attributes defined within
+existing standards are appropriate for measuring a software artifact’s
+technical sustainability is an open research question and provides
+further avenues for research. In addition, how to make software
+sustainable both in terms of the software artifact, the development
+process, and how these relate to the wider concerns of environmental,
+economic, social, individual, and technical sustainability remains an
+open area of research.
+
+Software architectures can be considered the Quoins of sustainable
+software. While research into the relationship between software
+architectures and sustainability is strictly limited, emerging
+evidence suggests that the architecture plays a critical role in
+satisfying non-functional requirements. As a result, software
+architectures are not only fundamental in understanding how the
+software system will be built in the first instance, they are critical
+to post-deployment system maintenance and evolution, which in turn
+leads to software that is sustainable. While it is suggested that
+architectural design is more of a creative process, which requires a
+degree of expertise, the principal challenge is how to embed software
+architectural practice into software engineering best practice rather
+than viewed as a by-product of the software engineering process; which
+is particularly true of software developed in academic environments.
+
+An emerging area of interest in the field of software architectures is
+architectural sustainability, which aims to address architectural
+drift and erosion that can result in a decrease in software
+quality. While a small number of approaches have been proposed their
+value is unknown and require validation to test their limits. Critical
+to architectural sustainability is capturing decision viewpoints and
+their rationale as first-class elements of architectural
+descriptions. How this can be achieved in practice is unclear and is
+an area ripe for research. However, based on our previous work into
+the relationship between trust, provenance, and high-value decision
+making in data intensive, service-oriented computing environments, we
+suggest that integrating requirements traceability methods and
+provenance potentially provides an avenue for further research.
+
+If we accept the premise that software architectures are the key to
+developing technical sustainable software then ensuring architectural
+sustainability is critical to its success. However, the software
+engineering profession currently lacks a common ground that
+articulates its role in sustainability. Efforts by the Karlskrona
+consortium have attempted to address this by articulating the
+fundamental principles underpinning design and engineering choices
+that affect sustainability within and beyond the software engineering
+community [50, 51]. The concept of sustainability is inherently
+multi-disciplinary as it concerns a complex system having multiple
+dimensions such as environmental, economic, societal, technological
+and other perspectives. Our vision is of a future in which a set of
+principles and methods inform sustainable software engineering. As a
+result, any effort in addressing sustainability involves integrating
+concepts, principles, and methods from a range of disciplines and
+greater engagement with the communities investigating sustainability.
+
+For sustainability to become a first-class quality consideration, we
+intend to progress the research agenda by investigating the
+development of a non-functional requirements framework to create a
+hierarchically structured set of characteristics including their
+metrics and measures for sustainability, and to investigate the role
+of software architectures in pre-system and post-system deployment
+reasoning about sustainability as a NFR to develop a software
+sustainability evaluation framework that will assist in facilitating a
+greater holistic view of sustainability.
+
 
 % \section{Acknowledgements}\label{sec:ack}
 % T. Crick acknowledge support from the Software Sustainability
@@ -162,20 +773,18 @@ references~\citep{crick-et-al_wssspe2,crick-et-al_recomp2014,venters-et-al_wsssp
 % do it in the elsarticle class?
 \section*{Author Biographies}
 
+\noindent {\textbf{Colin C. Venters}} is...\\
+
 \noindent {\textbf{Tom Crick}} is Professor of Computer Science \& Public Policy
 at Cardiff Metropolitan University, UK. He is the Nesta Data Science
 Fellow and a 2014 Fellow of the Software Sustainability
 Institute. His research interests...\\
 
-\noindent {\textbf{Birgit Penzenstadler}} is...\\
+\noindent {\textbf{Birgit Penzenstadler}} is...
 
-\noindent {\textbf{Colin C. Venters}} is...
 
 \section*{References}\label{sec:refs}
 
-%% If you have bibdatabase file and want bibtex to generate the
-%% bibitems, please use
-%%
 \bibliographystyle{elsarticle-harv} 
 \bibliography{jss2016}
 
