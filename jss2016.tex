@@ -168,21 +168,21 @@ Software sustainability \sep Software architectures \sep Architectural sustainab
 %% main text
 \section{Introduction}\label{sec:intro}
 
-% Dummy cite to get some
-% references~\citep{crick-et-al_wssspe2,crick-et-al_recomp2014,venters-et-al_wssspe3}.
-
 Sustainability has been identified as an important future topic in the
 field of software engineering as software systems become increasingly
-more complex and operate in evolving, distributed eco-systems
-[1]. However, the concept of software sustainability is an elusive and
-ambiguous term with diametrical opposed views and interpretations
-[2]. As a result, there is a considerable amount of mystification and
-divergence regarding what software sustainability means, how it can be
-measured or demonstrated, and how to train and educate the broad
-spectrum of domain scientists or advance the skills of software
-engineers to develop software that is sustainable [3].  Change is
-inevitable [4]. It estimated that approximately 50--70\% of the total
-lifecycle cost is spent on evolving a system [5]. If change is an
+more complex and operate in evolving, distributed
+eco-systems~\citep{geist+lucas:2009}. However, the concept of software
+sustainability is an elusive and ambiguous term with diametrical
+opposed views and interpretations~\citep{venters-et-al:2014}. As a
+result, there is a considerable amount of mystification and divergence
+regarding what software sustainability means, how it can be measured
+or demonstrated, and how to train and educate the broad spectrum of
+domain scientists or advance the skills of software engineers to
+develop software that is
+sustainable~\citep{penzenstadler+fleischmann:2011}.  Change is
+inevitable~\citep{bener-et-al:2014}; it is estimated that
+approximately 50--70\% of the total lifecycle cost is spent on
+evolving a system~\citep{ecklund-et-al:1996}. If change is an
 inevitable feature of the software lifecycle this raises the question,
 what is the most efficient and effective method or approach for
 managing change and evolution in terms of software’s sustainability?
@@ -190,7 +190,7 @@ managing change and evolution in terms of software’s sustainability?
 The biblical tale of Nebuchadnezzar's
 dream\footnote{\url{https://en.wikipedia.org/wiki/Daniel_2}} relates
 to a statue composed of different types of metal built on a foundation
-of clay and iron [6]. However, iron and clay are materials that cannot
+of clay and iron. However, iron and clay are materials that cannot
 bond to form a long-lasting foundation and will deteriorate
 overtime. The analogy of the feet of clay is now commonly used to
 refer to a weakness or flaw. The central thesis of this paper is that
@@ -200,32 +200,35 @@ evolutionary change. To achieve this, this paper proposes that
 sustainable software architectures are fundamental to the development
 of technically sustainable software. The principle aim of this paper
 is to explore existing work to provide the theoretical foundation to
-support our thesis. Section 2 examines the concept of sustainability
-and its relationship to sustainable software. Section 3 examines the
-relationship between non-functional requirements, sustainability and
-software architectures. Section 4 explores emerging work in the area
-of developing sustainable software architectures. In Section 5,
-conclusions are drawn and future directions are outlined.
+support our thesis. Section~\ref{sec:sussoft} examines the concept of
+sustainability and its relationship to sustainable
+software. Section~\ref{sec:sust+softarch} examines the relationship
+between non-functional requirements, sustainability and software
+architectures. Section~\ref{sec:sustsoftarch} explores emerging work
+in the area of developing sustainable software architectures. In
+Section~\ref{sec:summconc}, conclusions are drawn and future
+directions are outlined.
 
 
 \section{Sustainable Software}\label{sec:sussoft}
 
 Before software sustainability can be measured as an attribute it must
-be understood [7]. The word sustainability is derived from the Latin
-{\emph{sustinere}}. The Oxford English Dictionary [8] defines
-sustainability as ‘the quality of being sustained’, where
-sustained can be defined as ‘capable of being endured’ and ‘capable of
-being ‘maintained’. This suggests that longevity and the ability to
-maintain are key factors at the heart of understanding sustainability.
-As a part of the concept of sustainable development, the most widely
-adopted definition of sustainability was that proposed by the
-Brundtland commission [9], which was defined as ‘meeting the needs of
-the present without compromising the ability of future generations to
-meet their own needs’. The word ‘need’ is central to this definition
-and includes a dimension of time, present and future. However, this
-definition is problematic for several reasons including that it is
-broad in its scope, it is open to interpretation, and it is difficult,
-if not impossible, to quantify.
+be understood~\citep{seacord-et-al:2003}. The word sustainability is
+derived from the Latin {\emph{sustinere}}. The Oxford English
+Dictionary defines sustainability as ‘the quality of being sustained’,
+where sustained can be defined as ‘capable of being endured’ and
+‘capable of being ‘maintained’. This suggests that longevity and the
+ability to maintain are key factors at the heart of understanding
+sustainability.  As a part of the concept of sustainable development,
+the most widely adopted definition of sustainability was that proposed
+by the Brundtland Report~\citep{brundtlandreport:1987}, defined as
+`{\emph{meeting the needs of the present without compromising the
+ability of future generations to meet their own needs}}'. The word
+`{\emph{need}}' is central to this definition and includes a dimension
+of time, present and future. However, this definition is problematic
+for several reasons including that it is broad in its scope, it is
+open to interpretation, and it is difficult, if not impossible, to
+quantify.
 
 In recent years, a triple bottom line perspective of sustainability
 has been adopted which considers sustainability to include three
@@ -390,7 +393,7 @@ that the quality factors have been addressed in a quantifiable
 way. How this might be achieved is discussed in the following section.
 
 
-\section{Sustainability \& Software Architectures}\label{sust+softarch}
+\section{Sustainability \& Software Architectures}\label{sec:sust+softarch}
 
 To achieve technical sustainable software, we postulate that
 [sustainable] software architectures are fundamental to their
@@ -461,7 +464,7 @@ of the software architecture as an intrinsic part of overall software
 sustainability.
 
 
-\section{Sustainable Software Architectures}\label{sustsoftarch}
+\section{Sustainable Software Architectures}\label{sec:sustsoftarch}
 
 Architecture sustainability is the capacity of a software architecture
 to endure different types of change through efficient maintenance and
@@ -675,7 +678,7 @@ inclusion of non-functional requirements as a prime driver of
 architecture design.
 
 
-\section{Summary \& Conclusions}\label{summconc}
+\section{Summary \& Conclusions}\label{sec:summconc}
 
 In this paper we propose that sustainable software architectures are
 fundamental to the development of technical sustainable software as a
